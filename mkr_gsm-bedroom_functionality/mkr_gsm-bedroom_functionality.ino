@@ -4,7 +4,7 @@ this is the source code for the bedroom functionality of the smart home. it feat
   - ultrasonic sensor         - Detect approaching objects
   - light dependent resistor  - Detect for any bright lights
   - buzzer                    - Alarm
-  - lED                       - Bulb
+  - LED                       - Bulb
 */
 
 // libraries
