@@ -38,30 +38,28 @@ void setup() {
   delay(2000);
 
   pinMode(ledPin, OUTPUT);
-  dht.begin();
+  dht.begin(); // initialize the dht11 module
 }
 
 void loop() {
+  // oled display
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(WHITE);
-  
   display.setCursor(0, 0);
 
-  float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature();
+  // dht11 module functionality
+  float humidity = dht.readHumidity(); // variable for humidity
+  float temperature = dht.readTemperature(); // variable for temperature
 
   if (isnan(humidity) || isnan(temperature)) {
-    Serial.println("Failed to read from DHT sensor!");
+    Serial.println("Failed to read from DHT sensor!"); // display if dht module reads an invalid value
+    display.print("DHT11 module error");
   } else {
-    Serial.print("Humidity: ");
-    Serial.print(humidity);
-    Serial.println("%");
-    display.print("Humidity: "); display.print(humidity); display.println("%");
-    Serial.print("Temperature: ");
-    Serial.print(temperature);
-    Serial.println("°C");
-    display.print("Temperature: "); display.print(temperature); display.println("°C");
+    Serial.print("Humidity: "); Serial.print(humidity); Serial.println("%"); // display humidity values on the serial monitor
+    display.print("Humidity: "); display.print(humidity); display.println("%"); // display humidity values on the oled display
+    Serial.print("Temperature: "); Serial.print(temperature); Serial.println("°C"); // display temperature values on the serial monitor
+    display.print("Temperature: "); display.print(temperature); display.println("°C"); // display temperature values on the oled display
   }
 
   display.display();
