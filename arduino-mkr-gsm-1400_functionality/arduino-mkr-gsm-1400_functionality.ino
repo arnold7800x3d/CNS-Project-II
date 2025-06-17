@@ -1,10 +1,11 @@
 /*
-this is the source code for the bedroom functionality of the smart home. it features:
-  - arduino mkr gsm 1400      - Microcontroller
-  - ultrasonic sensor         - Detect approaching objects
-  - light dependent resistor  - Detect for any bright lights
-  - buzzer                    - Alarm
-  - LED                       - Bulb
+this is the source code for the arduino mkr gsm 1400 functionality of the bank monitoring file. it features:
+  - arduino mkr gsm 1400      - microcontroller
+  - ultrasonic sensor         - detect approaching objects
+  - light dependent resistor  - detect for light based tampering
+  - buzzer                    - alarm indicator
+  - LED                       - status indicator
+  - OLED screen               - display
 */
 
 // libraries

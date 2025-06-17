@@ -1,9 +1,11 @@
 /*
-  this is the source code for the living room functionality of the smart home. it features:
-    - esp32 38pin   - Microcontroller
-    - dht11 module  - Temperature and humidity readings
-    - OLED display  - TV
-    - LED           - Bulb
+  this is the source code for the esp32 38-pin functionality of the bank monitoring system. it features:
+    - esp32 38pin   - microcontroller
+    - dht11 module  - temperature and humidity readings
+    - OLED display  - display
+    - LED           - status indicators
+    - PIR           - detect motion
+    - buzzer        - alarm indicator
 */
 
 // libraries
