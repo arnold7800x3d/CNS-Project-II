@@ -1,4 +1,4 @@
-# CIA-Triad_Oriented Security Architecture for Mission Critical IoT Environments: A Bank Monitoring Case Study.
+# CIA-Triad-Oriented Security Architecture for Mission Critical IoT Environments: A Bank Monitoring Case Study.
 
 IoT technologies are widely adopted in various areas such as industries, healthcare, smart homes, smart cities, transportation among others and are used in monitoring, security, management or automating some operations in these areas. The CIA triad also features in these environments, to secure the data that flows in and out of these sectors and that it is kept private to only authorized users, the data is not tampered with and that it is available for use when needed by relevant parties. However, many IoT devices lack robust security implementations due to their constrained computational resources, limited power, and minimal memory, which make it challenging to support traditional security protocols. Most IoT systems lack a unified framework that ensures confidentiality of transmitted data, integrity of system functions, and continuous availability of services, especially under potential attacks or failures. In high-stakes environments such as banking, even minor breaches can lead to severe financial and operational consequences.
 
@@ -6,4 +6,4 @@ This project aims to address the gap by designing secure, resilient, and scalabl
 
 ## Authors 
 "CIA-Triad_Oriented Security Architecture for Mission Critical IoT Environments: A Bank Monitoring Case Study" was undertaken by Arnold Ochieng' for CNS 4101: CNS Project II at Strathmore University in 2025. For any questions or additional information about this project, contact the author.
-- [Arnold Ochieng'](https://github.com/arnold7800)
+- [Arnold Ochieng'](https://github.com/arnold7800x3d)
