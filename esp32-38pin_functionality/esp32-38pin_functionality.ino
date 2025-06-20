@@ -17,26 +17,35 @@
 // variables
 #define DHTPIN 0  // pin for the DHT module
 #define DHTTYPE DHT11
-#define SCREEN_WIDTH 128  // OLED display width (px)
-#define SCREEN_HEIGHT 64  // OLED display height (px)
+
+// OLED display configuration
+#define SCREEN_WIDTH 128  
+#define SCREEN_HEIGHT 64  
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0X3C
 
 const int ledPin = 2;  // pin for the LED
 
 // objects
 DHT dht(DHTPIN, DHTTYPE);
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial) {
-    ;
-  }
-
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {  // Address 0x3D for 128x64
+  
+  // initialization of the OLED display
+  if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {  // Address 0x3D for 128x64
     Serial.println(F("SSD1306 allocation failed"));
     for (;;)
       ;
   }
+
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println("Initializing display");
+  display.display();
   delay(2000);
 
   pinMode(ledPin, OUTPUT);

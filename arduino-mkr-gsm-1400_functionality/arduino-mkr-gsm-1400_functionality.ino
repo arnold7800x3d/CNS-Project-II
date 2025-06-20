@@ -10,6 +10,15 @@ this is the source code for the arduino mkr gsm 1400 functionality of the bank m
 
 // libraries
 #include <Servo.h> // servo motor library
+// OLED display libratries
+#include <Adafruit_SSD1306.h> 
+#include <Adafruit_GFX.h>
+
+// OLED display configuration
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0X3C
 
 // variables
 const int servoPin = 6; // pin for the servo motor
@@ -34,6 +43,9 @@ bool ledOn = false;
 // light detection variables
 unsigned long lastLightDetectionTime = 0; // track the last time light was detected 
 
+// objects
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
 void setup() {
   Serial.begin(9600);
 
@@ -42,6 +54,20 @@ void setup() {
   pinMode(ldrPin, INPUT); // set ldrPin as an output
   pinMode(trigPin, OUTPUT); // set trigPin as an output
   pinMode(echoPin, INPUT); // set echoPin as an input
+
+  // initializion of the OLED display
+  if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;);
+  }
+
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println("Initializing display");
+  display.display();
+  delay(2000);
   
   // attach the servo to the pin number
   servoMotor.attach(servoPin);
@@ -87,6 +113,10 @@ void measureDistance(int angle) {
 
   Serial.print("Angle: "); Serial.println(angle); // print the angle at which the distance was taken
   Serial.print("Distance: "); Serial.print(cm); Serial.println(" cm"); // print the distance
+
+  // print on the OLED display
+  display.print("Angle: "); display.println(angle);
+  display.print("Distance: "); display.print(cm); display.println("cm");
 
   // if distance to object is less than 10cm, sound the alarm
   if (cm <= 10) {
