@@ -10,7 +10,7 @@ this is the source code for the arduino mkr gsm 1400 functionality of the bank m
 
 // libraries
 #include <Servo.h> // servo motor library
-// OLED display libratries
+// OLED display libraries
 #include <Adafruit_SSD1306.h> 
 #include <Adafruit_GFX.h>
 
