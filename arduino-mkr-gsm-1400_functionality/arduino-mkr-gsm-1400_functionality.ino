@@ -74,11 +74,18 @@ void setup() {
 }
 
 void loop() {
+  // oled display
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  
   detectObject(); // call function to detect objects
   detectLight(); // call function to detect light
 
   digitalWrite(ledPin, ledOn ? HIGH : LOW); // set the LED state 
   ledOn = false; // reset flag for next flag
+  display.display()
   delay(1000);
 }
 
@@ -152,6 +159,7 @@ void detectLight() {
 
     int ldrValue = analogRead(ldrPin); // read value from the ldr
     Serial.print("LDR value: "); Serial.println(ldrValue); // print the value
+    display.print("LRD value: "); display.println(ldrValue); // print on the display
 
     if (ldrValue >= 400) {
       tone(buzzerPin, 2000);
